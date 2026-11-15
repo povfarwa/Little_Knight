@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://x3sbrmv7ex4v"]
+
+[ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="1_tihdl"]
+[ext_resource type="Script" uid="uid://dk48nh567lsrn" path="res://bouncepad.gd" id="1_uvrkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krgla"]
+size = Vector2(95.375, 80.875)
+
+[node name="Bouncepad" type="Area2D" unique_id=65185645]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_uvrkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2078682971]
+position = Vector2(-337, 0)
+scale = Vector2(338, 108)
+region_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117878781]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_krgla")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=286095950]
+position = Vector2(5, 8)
+stream = ExtResource("1_tihdl")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1346900076]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
